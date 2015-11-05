@@ -1,0 +1,48 @@
+{
+  "name": "redux-easy-app",
+  "version": "0.0.1",
+  "description": "Wrapper library for a Redux Isomorphic App with Router",
+  "main": "dist/index",
+  "scripts": {
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "isomorphic",
+    "react-router",
+    "redux-router",
+    "skeleton"
+  ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/npm/npm.git"
+  },
+  "author": "Vito Latrofa",
+  "email" : "me@poetcyb.org",
+  "license": "MIT",
+  "dependencies": {
+    "babel-runtime": "^5.8.29",
+    "history": "^1.13.0",
+    "isomorphic-fetch": "^2.1.0",
+    "methods": "^1.1.1",
+    "nunjucks": "^1.3.4",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-redux": "^4.0.0",
+    "react-router": "^1.0.0-rc3",
+    "redux": "^3.0.4",
+    "redux-logger": "^2.0.4",
+    "redux-router": "^1.0.0-beta3",
+    "redux-thunk": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.29",
+    "babel-core": "^5.8.33",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^5.3.3",
+    "eslint": "^1.8.0",
+    "eslint-loader": "^1.1.0",
+    "eslint-plugin-react": "^3.6.3",
+    "react-hot-loader": "^1.2.7"
+  }
+}
