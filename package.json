@@ -1,10 +1,9 @@
 {
   "name": "redux-easy-app",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Wrapper library for a Redux Isomorphic App with Router",
   "main": "dist/index",
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [
     "react",
     "redux",
@@ -13,11 +12,11 @@
     "redux-router"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/poetcyborg/redux-easy-app"
+    "type": "git",
+    "url": "https://github.com/poetcyborg/redux-easy-app"
   },
   "author": "Vito Latrofa",
-  "email" : "me@poetcyb.org",
+  "email": "me@poetcyb.org",
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^5.8.29",
