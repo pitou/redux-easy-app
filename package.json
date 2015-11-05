@@ -10,12 +10,11 @@
     "redux",
     "isomorphic",
     "react-router",
-    "redux-router",
-    "skeleton"
+    "redux-router"
   ],
   "repository": {
     "type" : "git",
-    "url" : "https://github.com/npm/npm.git"
+    "url" : "https://github.com/poetcyborg/redux-easy-app"
   },
   "author": "Vito Latrofa",
   "email" : "me@poetcyb.org",
