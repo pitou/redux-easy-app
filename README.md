@@ -18,9 +18,9 @@ already uses the functions explained in the following section.
 Redux'(s?) function wrappers
 ----------------------------
 
-**redux-easy-app** exposes only three functions:
+*redux-easy-app* exposes only three functions:
 
-###createContainer()
+**createContainer()**
 
 Binds a component to his props and actions.
 
@@ -28,7 +28,7 @@ You may want use this one on every component that interacts in any way with the 
 
     export default createContainer(ExampleComponent, SomeActions, mapStateToProps);
 
-###renderClientApp()
+**renderClientApp()**
 
 Renders the app in the browser, given its routes and reducers.
 
@@ -38,7 +38,7 @@ Renders the app in the browser, given its routes and reducers.
         appRootElement
     });
 
-###startServerApp()
+**startServerApp()**
 
 This one needs a larger number of arguments but takes care about a lot of things: isomorphism, data pre-fetch,
 state push into the tree of routes.
