@@ -10,8 +10,6 @@ export default (req, res, options) => {
 
     const store = createStore(reducers, undefined, routes);
 
-    console.log("Path: " + req.path);
-
     store.dispatch(match(req.path, (error, redirectLocation, renderProps) => {
         if (error) {
           console.log(error);
@@ -23,8 +21,6 @@ export default (req, res, options) => {
         if (! renderProps) {
           return res.status(404).end('Not found'); // TODO: render 404 on client?
         }
-
-        console.log("--> Preloading data");
 
         fetchInitialData(renderProps.location.pathname, store)
             .then(() => renderApp(routes, store, options))

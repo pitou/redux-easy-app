@@ -40,12 +40,15 @@ Renders the app in the browser, given its routes and reducers.
 
 **startServerApp()**
 
-This one needs a larger number of arguments but takes care about a lot of things: isomorphism, data pre-fetch,
+This one needs a larger number of options but takes care about a lot of things: isomorphism, data pre-fetch,
 state push into the tree of routes.
 
 You have to provide an instance of an Express app as first argument. The **request** object will be internally
 used to decide which route has been requested and fetch the data accordingly, the **response** object will
 be used to send the rendered HTML.
+
+The *viewFilename* option refers to a [nunjucks](https://www.npmjs.com/package/nunjucks) template file, usually the index.html of your app.
+In the future, other template engines will be supported too.
 
 
     startServerApp(app, {
