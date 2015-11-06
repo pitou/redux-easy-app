@@ -26,7 +26,7 @@ Binds a component to his props and actions.
 
 You may want use this one on every component that interacts in any way with the state of the application.
 
-    export default createContainer(ExampleComponent, SomeActions, mapStateToProps);
+    createContainer(ExampleComponent, SomeActions, mapStateToProps);
 
 **renderClientApp()**
 
@@ -40,7 +40,7 @@ Renders the app in the browser, given its routes and reducers.
 
 **startServerApp()**
 
-This one needs a larger number of options but takes care about a lot of things: isomorphism, data pre-fetch,
+This one needs a larger number of options but takes care of a lot of things: isomorphism, data pre-fetch,
 state push into the tree of routes.
 
 You have to provide an instance of an Express app as first argument. The **request** object will be internally
