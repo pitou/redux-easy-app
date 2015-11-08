@@ -14,7 +14,6 @@ However, if you are starting to write an app from scratch, you may consider down
 [redux-app-skeleton](https://github.com/poetcyborg/redux-app-skeleton), which depends on this module and
 already uses the functions explained in the following section.
 
-
 Redux'(s?) function wrappers
 ----------------------------
 
@@ -50,11 +49,16 @@ be used to send the rendered HTML.
 The *viewFilename* option refers to a [nunjucks](https://www.npmjs.com/package/nunjucks) template file, usually the index.html of your app.
 In the future, other template engines will be supported too.
 
-
     startServerApp(app, {
         routes,
         reducers,
-        fetchInitialData,
+        routesFetchersMap,
         viewsFolderPath,
         viewFilename
     });
+
+The option *routesFetchersMap* should be an array of objects having the format specified in
+[this example](https://github.com/poetcyborg/redux-app-skeleton/blob/master/src/server/routesFetchersMap.js).
+
+Given a certain route, the server app will call the function that you specified as the *func* parameter
+and then the page will be rendered with the fetched data.

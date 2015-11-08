@@ -3,10 +3,11 @@ import { match } from 'redux-router/server';
 
 import renderApp from './renderApp';
 import createStore from '../createStore';
+import prefetchData from './prefetchData';
 
 export default (req, res, options) => {
 
-    const { routes, reducers, fetchInitialData } = options;
+    const { routes, reducers, routesFetchersMap } = options;
 
     const store = createStore(reducers, undefined, routes);
 
@@ -22,7 +23,7 @@ export default (req, res, options) => {
           return res.status(404).end('Not found'); // TODO: render 404 on client?
         }
 
-        fetchInitialData(renderProps.location.pathname, store)
+        prefetchData(routesFetchersMap, renderProps.location.pathname, store)
             .then(() => renderApp(routes, store, options))
             .then(html => res.send(html))
             .catch(err => res.send(`Error: ${err.message}`));
