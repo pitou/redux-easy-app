@@ -9,9 +9,7 @@ export default (req, res, options) => {
 
     const { routes, reducers, routesFetchersMap } = options;
 
-    const store = createStore(reducers);
-
-    store.dispatch(match({ routes, location: req.path }, (error, redirectLocation, renderProps) => {
+    match({ routes, location: req.path }, (error, redirectLocation, renderProps) => {
         if (error) {
           console.log(error);
           return res.status(500).end('Internal server error');
@@ -23,9 +21,11 @@ export default (req, res, options) => {
           return res.status(404).end('Not found'); // TODO: render 404 on client?
         }
 
+        const store = createStore(reducers);
+
         prefetchData(routesFetchersMap, renderProps.location.pathname, store)
-            .then(() => renderApp(routes, store, options))
+            .then(() => renderApp(renderProps, store, options))
             .then(html => res.send(html))
             .catch(err => res.send(`Error: ${err.stack}`));
-    }));
+    });
 }
