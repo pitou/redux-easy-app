@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOMServer from 'react-dom/server';
+import { RoutingContext } from 'react-router';
 import nunjucks from 'nunjucks';
 
 export default function(renderProps, store, options) {
