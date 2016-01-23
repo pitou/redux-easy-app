@@ -13,7 +13,7 @@ export default function(reducers, initialState) {
 
     const store = new createStoreWithMiddleware(reducer, initialState);
 
-    const isBrowser = typeof window !== 'undefined' && window.__CLIENT_;
+    const isBrowser = typeof window !== 'undefined' && window.__CLIENT__;
     if (isBrowser) {
         syncReduxAndRouter(history, store);
     }
