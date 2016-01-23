@@ -1,28 +1,22 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import { reduxReactRouter } from 'redux-router';
-import { reduxReactRouter as reduxReactRouterServer } from 'redux-router/server';
-import thunkMiddleware from 'redux-thunk';
-import { routeReducer } from 'redux-simple-router'
-//import loggerMiddleware from 'redux-logger';
+import { syncReduxAndRouter, routeReducer } from 'redux-simple-router';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import history from './history';
 
 export default function(reducers, initialState, routes) {
 
-    const reducer = combineReducers(
-        Object.assign({}, reducers, {
-            routing: routeReducer
-        })
-    );
+    const reducer = combineReducers(Object.assign({}, reducers, {
+        routing: routeReducer
+    }));
 
-    // Required for replaying actions from devtools to work
-    //reduxRouterMiddleware.listenForReplays(store)
+    const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
-    return compose(
-        applyMiddleware(
-            thunkMiddleware
-            //, loggerMiddleware
-        ),
-        router({
-            routes,
-        })
-    )(createStore)(reducer, initialState);
+    const store = new createStoreWithMiddleware(reducer, initialState);
+
+    const isBrowser = window !== undefined && window.__CLIENT_;
+    if (isBrowser) {
+        syncReduxAndRouter(history, store);
+    }
+
+    return store;
 }

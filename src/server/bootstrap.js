@@ -1,5 +1,5 @@
 import React from 'react';
-import { match } from 'redux-router/server';
+import { match } from 'react-router';
 
 import renderApp from './renderApp';
 import createStore from '../createStore';
