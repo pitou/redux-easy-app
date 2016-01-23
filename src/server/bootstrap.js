@@ -26,6 +26,6 @@ export default (req, res, options) => {
         prefetchData(routesFetchersMap, renderProps.location.pathname, store)
             .then(() => renderApp(routes, store, options))
             .then(html => res.send(html))
-            .catch(err => res.send(`Error: ${err.message}`));
+            .catch(err => res.send(`Error: ${err.stack}`));
     }));
 }
