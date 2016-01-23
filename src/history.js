@@ -1,5 +1,5 @@
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { browserHistory } from 'react-router';
 
 const isBrowser = typeof window !== 'undefined' && window.__CLIENT_;
 
-export default isBrowser ? createBrowserHistory() : { listen: () => {} };
+export default isBrowser ? browserHistory : { listen: () => {} };
