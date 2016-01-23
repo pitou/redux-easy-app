@@ -1,7 +1,6 @@
 import { syncHistory, routeReducer } from 'redux-simple-router';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import history from './history';
 
 export default function(reducers, initialState) {
 
@@ -11,13 +10,5 @@ export default function(reducers, initialState) {
 
     const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
-    const store = new createStoreWithMiddleware(reducer, initialState);
-
-    const isBrowser = typeof window !== 'undefined' && window.__CLIENT__;
-    if (isBrowser) {
-        const router = syncHistory(history);
-        router.syncHistoryToStore(store);
-    }
-
-    return store;
+    return new createStoreWithMiddleware(reducer, initialState);
 }
