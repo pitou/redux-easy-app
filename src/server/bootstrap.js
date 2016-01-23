@@ -9,9 +9,9 @@ export default (req, res, options) => {
 
     const { routes, reducers, routesFetchersMap } = options;
 
-    const store = createStore(reducers, undefined, routes);
+    const store = createStore(reducers);
 
-    store.dispatch(match(req.path, (error, redirectLocation, renderProps) => {
+    store.dispatch(match({ routes, location: req.path }, (error, redirectLocation, renderProps) => {
         if (error) {
           console.log(error);
           return res.status(500).end('Internal server error');

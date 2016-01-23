@@ -3,7 +3,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import history from './history';
 
-export default function(reducers, initialState, routes) {
+export default function(reducers, initialState) {
 
     const reducer = combineReducers(Object.assign({}, reducers, {
         routing: routeReducer
