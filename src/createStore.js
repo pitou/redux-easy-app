@@ -1,4 +1,4 @@
-import { syncHistory, routeReducer } from 'redux-simple-router';
+import { routeReducer } from 'react-router-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
