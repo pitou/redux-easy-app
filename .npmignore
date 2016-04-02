@@ -1,6 +1,6 @@
-node_modules
-node_modules*
-.git
+node_modules/
+node_modules*/
+.git/
 npm-debug.log
-src
-.idea/
+src/
+scripts/
