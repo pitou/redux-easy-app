@@ -1,14 +1,14 @@
-import { routeReducer } from 'react-router-redux';
+import { routeReducer as router } from 'react-router-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-export default function(reducers, initialState) {
+export default (reducers, initialState) => {
 
-    const reducer = combineReducers(Object.assign({}, reducers, {
-        routing: routeReducer
-    }));
+  const reducer = combineReducers({
+    router,
+    ...reducers,
+  });
 
-    const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-
-    return new createStoreWithMiddleware(reducer, initialState);
-}
+  const middleware = applyMiddleware(thunk);
+  return createStore(reducer, initialState, middleware);
+};
