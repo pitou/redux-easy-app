@@ -7,7 +7,7 @@ import prefetchData from './prefetchData';
 
 export default (req, res, options) => {
 
-    const { routes, reducers, routesFetchersMap } = options;
+    const { routes, reducers, initialState, routesFetchersMap } = options;
 
     match({ routes, location: req.path }, (error, redirectLocation, renderProps) => {
         if (error) {
@@ -21,7 +21,7 @@ export default (req, res, options) => {
           return res.status(404).end('Not found'); // TODO: render 404 on client?
         }
 
-        const store = createStore(reducers);
+        const store = createStore(reducers, initialState);
 
         prefetchData(routesFetchersMap, renderProps.location.pathname, store)
             .then(() => renderApp(renderProps, store, options))
