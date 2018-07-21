@@ -1,6 +1,6 @@
 {
   "name": "redux-easy-app",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Wrapper library for a Redux Isomorphic App with Router",
   "main": "dist/index",
   "scripts": {
