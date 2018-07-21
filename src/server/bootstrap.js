@@ -9,7 +9,7 @@ export default (req, res, options) => {
 
     const { routes, reducers, initialState, routesFetchersMap } = options;
 
-    match({ routes, location: req.path }, (error, redirectLocation, renderProps) => {
+    match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
         if (error) {
           console.log(error);
           return res.status(500).end('Internal server error');
