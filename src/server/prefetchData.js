@@ -1,4 +1,4 @@
-export default function(routesFetchersMap, path, store) {
+export default function(routesFetchersMap, path, query, store) {
 
     const decodedPath = decodeURI(path);
     console.log("Pre-fetcher --> Decoded path: " + decodedPath);
@@ -11,7 +11,7 @@ export default function(routesFetchersMap, path, store) {
         const m = regex.exec(decodedPath);
         if (m !== null) {
             console.log(`Pre-fetcher --> Matched ${name}`);
-            promises.push(store.dispatch(func(m)));
+            promises.push(store.dispatch(func(m, query)));
         }
     }
     if (promises.length > 0) {

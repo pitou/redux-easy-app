@@ -23,7 +23,7 @@ export default (req, res, options) => {
 
         const store = createStore(reducers, initialState);
 
-        prefetchData(routesFetchersMap, renderProps.location.pathname, store)
+        prefetchData(routesFetchersMap, renderProps.location.pathname, req.query, store)
             .then(() => renderApp(renderProps, store, options))
             .then(html => res.send(html))
             .catch(err => res.send(`Error: ${err.stack}`));
