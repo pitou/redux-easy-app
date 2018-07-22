@@ -18,8 +18,9 @@ export default function(renderProps, store, options) {
     nunjucks.configure(options.viewsFolderPath, { autoescape: true });
 
     return nunjucks.render(options.viewFilename, {
+        ...(options.customViewValues || {}),
         appString,
         initialState: JSON.stringify(initialState),
-        env: process.env
+        env: process.env,
     });
 }
