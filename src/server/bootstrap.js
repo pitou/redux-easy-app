@@ -9,6 +9,7 @@ export default (req, res, options) => {
 
     const { routes, reducers, initialState, routesFetchersMap, ignoredPathsRegex } = options;
     const onError = options.onError || (() => {});
+    const log = options.customLog || (message => { console.log(message); });
 
     match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
         if (error) {
@@ -23,8 +24,9 @@ export default (req, res, options) => {
         }
 
         const store = createStore(reducers, initialState);
+        const prefetcherOptions = { ignoredPathsRegex, log };
 
-        prefetchData(routesFetchersMap, renderProps.location.pathname, req.query, ignoredPathsRegex, store)
+        prefetchData(routesFetchersMap, renderProps.location.pathname, req.query, prefetcherOptions, store)
             .then(() => renderApp(renderProps, store, options))
             .then(html => res.send(html))
             .catch(err => {

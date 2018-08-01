@@ -1,12 +1,13 @@
-export default function(routesFetchersMap, path, query, ignoredPathsRegex, store) {
+export default function(routesFetchersMap, path, query, options, store) {
 
+    const { ignoredPathsRegex, log } = options;
     const decodedPath = decodeURI(path);
 
     if (ignoredPathsRegex && ignoredPathsRegex.test(decodedPath)) {
       return Promise.resolve(true);
     }
 
-    console.log(`Pre-fetcher --> Decoded path: ${decodedPath}, query: ${JSON.stringify(query)}`);
+    log(`Pre-fetcher --> Decoded path: ${decodedPath}, query: ${JSON.stringify(query)}`);
 
     const promises = [];
 
@@ -15,7 +16,7 @@ export default function(routesFetchersMap, path, query, ignoredPathsRegex, store
 
         const m = regex.exec(decodedPath);
         if (m !== null) {
-            console.log(`Pre-fetcher --> Matched ${name}`);
+            log(`Pre-fetcher --> Matched ${name}`);
 
             let actions = func(m, query);
             actions = (actions instanceof Array) ? actions : [actions];
@@ -26,6 +27,6 @@ export default function(routesFetchersMap, path, query, ignoredPathsRegex, store
       return Promise.all(promises);
     }
 
-    console.log(`Pre-fetcher --> No route matched, nothing to prefetch`);
+    log(`Pre-fetcher --> No route matched, nothing to prefetch`);
     return Promise.resolve(true);
 }
