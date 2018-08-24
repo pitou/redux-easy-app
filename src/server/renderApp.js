@@ -17,8 +17,17 @@ export default function(renderProps, store, options) {
 
     nunjucks.configure(options.viewsFolderPath, { autoescape: true });
 
+    const customViewValues = Object.keys(options.customViewValues || {}).reduce((acc, key) => {
+      const valueOrFunction = options.customViewValues[key];
+      return {
+        [key]: (typeof valueOrFunction === 'function') ?
+          valueOrFunction(initialState, renderProps) :
+          valueOrFunction,
+      };
+    }, {});
+
     return nunjucks.render(options.viewFilename, {
-        ...(options.customViewValues || {}),
+        ...customViewValues,
         appString,
         initialState: JSON.stringify(initialState),
         env: process.env,

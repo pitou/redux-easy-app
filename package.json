@@ -15,10 +15,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/poetcyborg/redux-easy-app"
+    "url": "https://github.com/pitou/redux-easy-app"
   },
   "author": "Vito Latrofa",
-  "email": "me@poetcyb.org",
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
