@@ -20,6 +20,7 @@ export default function(renderProps, store, options) {
     const customViewValues = Object.keys(options.customViewValues || {}).reduce((acc, key) => {
       const valueOrFunction = options.customViewValues[key];
       return {
+        ...acc,
         [key]: (typeof valueOrFunction === 'function') ?
           valueOrFunction(initialState, renderProps) :
           valueOrFunction,
