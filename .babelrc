@@ -1,10 +1,6 @@
 {
   "presets" : [
-    "env",
-    "react",
-    "stage-0"
-  ],
-  "plugins": [
-    "add-module-exports"
+    "@babel/env",
+    "@babel/react"
   ]
 }

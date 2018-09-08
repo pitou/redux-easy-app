@@ -26,7 +26,6 @@
     "no-use-before-define": [2],
     "no-var": [2],
     "strict": [2, "never"],
-
     "brace-style": [2, "1tbs"],
     "comma-spacing": [2, {"before": false, "after": true}],
     "eol-last": [2],
@@ -36,7 +35,7 @@
     "no-mixed-spaces-and-tabs": [2],
     "no-trailing-spaces": [2],
     //"no-underscore-dangle": [2],
-    "space-after-keywords": [2, "always"],
+    "keyword-spacing": [2],
     "space-before-blocks": [2, "always"],
     "space-before-function-paren": [2, "never"],
     "space-in-parens": [2, "never"],

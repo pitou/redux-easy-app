@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import bootstrap from './bootstrap';
 
 export default function(expressApp, options) {
