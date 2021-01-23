@@ -1,17 +1,10 @@
-import React, { Component } from 'react';       // eslint-disable-line no-unused-vars
-import { Router } from 'react-router';
+import React from 'react'
+import { Router } from 'react-router'
 
-export default function(routes) {
+import history from './history'
 
-    return class extends Component {
-        render() {
-            const history = require('./history');
-
-            return (
-                <Router history={history}>
-                    {routes}
-                </Router>
-            );
-        }
-    }
+const RouterWrapper = (routes) => {
+  return <Router history={history}>{routes}</Router>
 }
+
+export default RouterWrapper

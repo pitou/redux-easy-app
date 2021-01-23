@@ -1,6 +1,4 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux'
 
-export default function(component, actions, mapStateToProps) {
-
-    return connect(mapStateToProps, actions)(component);
-}
+export default (component, actions, mapStateToProps) =>
+  connect(mapStateToProps, actions)(component)

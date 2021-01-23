@@ -1,5 +1,5 @@
-export const renderClientApp = require('./client/renderApp');
+export const renderClientApp = require('./client/renderApp')
 
-export const startServerApp = require('./server/startApp');
+export const startServerApp = require('./server/startApp')
 
-export const createContainer = require('./createContainer');
+export const createContainer = require('./createContainer')
