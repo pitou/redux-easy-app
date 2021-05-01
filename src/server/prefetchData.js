@@ -17,13 +17,13 @@ export default (routesFetchersMap, path, query, options, store) => {
   const promises = []
 
   for (let i = 0; i < routesFetchersMap.length; i++) {
-    const { regex, name, func } = routesFetchersMap[i]
+    const { regex, name, getActions } = routesFetchersMap[i]
 
     const m = regex.exec(decodedPath)
     if (m !== null) {
       log(`Pre-fetcher --> Matched ${name}`)
 
-      let actions = func(m, query)
+      let actions = getActions(m, query, decodedPath)
       actions = actions instanceof Array ? actions : [actions]
       actions.forEach((action) => {
         promises.push(store.dispatch(action))
