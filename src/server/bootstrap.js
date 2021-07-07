@@ -1,4 +1,6 @@
 import { match } from 'react-router'
+import crypto from 'crypto'
+import fs from 'fs'
 
 import renderApp from './renderApp'
 import createStore from '../createStore'
@@ -33,6 +35,19 @@ export default (req, res, options) => {
         return res.status(404).end('Not found') // TODO: render 404 on client?
       }
 
+      const shouldUseCache = Boolean(options.cachePath)
+      let cachedPagePath
+
+      if (shouldUseCache) {
+        const filename = crypto.createHash('md5').update(req.url).digest('hex')
+        cachedPagePath = `${options.cachePath}/${filename}.html`
+
+        if (fs.existsSync(cachedPagePath)) {
+          const html = fs.readFileSync(cachedPagePath)
+          return res.send(html)
+        }
+      }
+
       const store = createStore(reducers, initialState)
       const prefetcherOptions = { ignoredPathsRegex, log }
 
@@ -44,7 +59,12 @@ export default (req, res, options) => {
         store
       )
         .then(() => renderApp(renderProps, store, options))
-        .then((html) => res.send(html))
+        .then((html) => {
+          if (shouldUseCache) {
+            fs.writeFileSync(cachedPagePath, html)
+          }
+          return res.send(html)
+        })
         .catch((err) => {
           onError(err)
           return res.status(200).end('')
