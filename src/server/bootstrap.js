@@ -44,6 +44,7 @@ export default (req, res, options) => {
 
         if (fs.existsSync(cachedPagePath)) {
           const html = fs.readFileSync(cachedPagePath)
+          res.setHeader('Content-Type', 'text/html')
           return res.send(html)
         }
       }
@@ -63,6 +64,7 @@ export default (req, res, options) => {
           if (shouldUseCache) {
             fs.writeFileSync(cachedPagePath, html)
           }
+          res.setHeader('Content-Type', 'text/html')
           return res.send(html)
         })
         .catch((err) => {
