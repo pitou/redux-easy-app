@@ -32,7 +32,6 @@ export default function (renderProps, store, options) {
   return nunjucks.render(options.viewFilename, {
     ...customViewValues,
     appString,
-    initialState: JSON.stringify(initialState),
     env: process.env,
   })
 }
